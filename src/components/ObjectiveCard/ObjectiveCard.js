@@ -13,7 +13,7 @@ const ObjectiveCard = ({ title, keyResults }) => {
     <>
       <Container>
         <ExpandButton onClick={() => setExpanded(!isExpanded)}>
-          <img src={isExpanded ? downArrow : rightArrow} />
+          <img src={isExpanded ? downArrow : rightArrow} alt="expand" />
         </ExpandButton>
         <p>{title}</p>
       </Container>

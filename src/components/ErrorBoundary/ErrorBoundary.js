@@ -18,7 +18,7 @@ class ErrorBoundary extends React.Component {
       return (
         <Container>
           <ImageContainer>
-            <img fluid src={require("../../assets/images/404.svg")} />
+            <img fluid src={require("../../assets/images/404.svg")} alt="404" />
           </ImageContainer>
           <Title>
            <p>
