@@ -32,6 +32,7 @@ const Container = styled.div`
 
 const Children = styled.div`
   max-width: 70vw;
+  max-height: 100vh;
   margin: auto;
   overflow: auto;
   background-color: ${({ theme }) => `${theme.background.light}`};

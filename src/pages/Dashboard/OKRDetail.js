@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Button from '../../components/Button'; 
 import Text from '../../components/Text';
 
+import empty from '../../assets/images/empty.svg';
+
 const OKRDetail = ({ objective, onClose }) => {
   const { title } = objective;
 
@@ -16,7 +18,7 @@ const OKRDetail = ({ objective, onClose }) => {
       <Body>
         <StyledImage
           fluid
-          src={require("../../assets/images/empty.svg")}
+          src={empty}
           alt="404"
         />
       </Body>
@@ -44,7 +46,7 @@ const Body = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 100%;
+  height: 400px;
   opacity: 0.4;
 `;
 
