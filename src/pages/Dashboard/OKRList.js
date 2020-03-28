@@ -4,24 +4,24 @@ import styled from "styled-components";
 
 // components
 import ObjectiveCard from "../../components/ObjectiveCard";
-import KeyResultListItem from "../../components/KeyResultListItem";
 
-const OKRList = ({ objectives, keyResults }) => {
-  const getKeyResult = id =>
-    keyResults.filter(keyResult => keyResult.parent_objective_id === id);
+//utils
+import { getKeyResultsBasedOnObjective } from "../../utils/misc";
 
-  return (
-    <OKRContainer>
-      {objectives.map(objective => (
-        <ObjectiveCard
-          title={objective.title}
-          onExpand={objective.id}
-          keyResults={getKeyResult(objective.id)}
-        />
-      ))}
-    </OKRContainer>
-  );
-};
+const OKRList = ({ objectives, keyResults }) => (
+  <OKRContainer>
+    {objectives.map(objective => (
+      <ObjectiveCard
+        title={objective.title}
+        onExpand={objective.id}
+        keyResults={getKeyResultsBasedOnObjective({
+          id: objective.id,
+          keyResults
+        })}
+      />
+    ))}
+  </OKRContainer>
+);
 
 OKRList.propTypes = {
   objectives: PropTypes.array.isRequired,
