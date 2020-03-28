@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// import components
+import ErrorBoundary from "./components/ErrorBoundary";
+
+// import containers
+import DashboardContainer from "./containers/Dashboard";
+
+// import utils
+import theme from "./styles/theme";
+
+// lazy load pages
+const Dashboard = lazy(() => import("./pages/Dashboard"));
+
+const App = () => (
+  <ThemeProvider theme={theme.default}>
+    <Router>
+      <ErrorBoundary>
+        <DashboardContainer>
+          <Suspense fallback={<div />}>
+            <Switch>
+              <Route path="/" exact component={Dashboard} />
+            </Switch>
+          </Suspense>
+        </DashboardContainer>
+      </ErrorBoundary>
+    </Router>
+  </ThemeProvider>
+);
 
 export default App;
