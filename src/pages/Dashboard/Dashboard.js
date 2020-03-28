@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import styled from "styled-components";
 
 // page components
 import OKRList from "./OKRList";
@@ -23,27 +24,44 @@ const Dashboard = () => {
 
   if (!isFetchingOkr) {
     return (
-      <>
+      <Container>
         <h2> OKR's List </h2>
-        <select value={selectedCategory} onChange={handleCategoryChange}>
-          <option>-- select category --</option>
-          {category.map(item => (
-            <option key={item.category} value={item.category}>{item.category}</option>
-          ))}
-        </select>
-        <OKRList
-          objectives={
-            !selectedCategory
-              ? objectives
-              : objectives.filter(
-                  objective => objective.category === selectedCategory
-                )
-          }
-          keyResults={keyResults}
-        />
-      </>
+        <OKRSection>
+          <Filter>
+            <label>Category </label>
+            <select value={selectedCategory} onChange={handleCategoryChange}>
+              <option>-- select category --</option>
+              {category.map(item => (
+                <option key={item.category} value={item.category}>
+                  {item.category}
+                </option>
+              ))}
+            </select>
+          </Filter>
+          <OKRList
+            objectives={
+              !selectedCategory
+                ? objectives
+                : objectives.filter(
+                    objective => objective.category === selectedCategory
+                  )
+            }
+            keyResults={keyResults}
+          />
+        </OKRSection>
+      </Container>
     );
   }
 };
 
 export default Dashboard;
+
+const Container = styled.div``;
+
+const OKRSection = styled.section`
+  width: 90vw;
+  margin: auto;
+`;
+
+const Filter = styled.div`
+`;

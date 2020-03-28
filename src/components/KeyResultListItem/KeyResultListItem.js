@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const KeyResultListItem = ({ title }) => <Container>{title}</Container>;
+const KeyResultListItem = ({ title }) => <Container>- {title}</Container>;
 
 KeyResultListItem.propTypes = {
   title: PropTypes.string.isRequired

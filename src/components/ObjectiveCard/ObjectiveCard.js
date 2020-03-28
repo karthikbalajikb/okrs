@@ -17,10 +17,13 @@ const ObjectiveCard = ({ title, keyResults }) => {
         </ExpandButton>
         <p>{title}</p>
       </Container>
-      {isExpanded &&
-        keyResults.map(keyResult => (
-          <KeyResultListItem key={keyResult.title} title={keyResult.title} />
-        ))}
+      {isExpanded && (
+        <KeyResultSection>
+          {keyResults.map(keyResult => (
+            <KeyResultListItem key={keyResult.title} title={keyResult.title} />
+          ))}
+        </KeyResultSection>
+      )}
     </>
   );
 };
@@ -43,4 +46,9 @@ const Container = styled.div`
 const ExpandButton = styled.div`
   padding-right: 10px;
   cursor: pointer;
+`;
+
+const KeyResultSection = styled.div`
+  border-left: ${({ theme }) => `1px solid ${theme.border.dark}`};
+  margin-left: 32px;
 `;
