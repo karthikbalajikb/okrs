@@ -16,4 +16,10 @@ const Container = styled.div`
   height: 40px;
   color: ${({ theme }) => `${theme.onBackground.light}`};
   margin-left: 50px;
+  &:hover {
+    background-color: ${({ theme }) => `${theme.primary.light}`};
+  }
+  &:nth-child(even) {
+    background-color: ${({ theme }) => `${theme.background.main}`};
+  }
 `;

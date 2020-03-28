@@ -1,6 +1,9 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 
+// components
+import Navbar from "../../components/Navbar";
+
 // page components
 import OKRList from "./OKRList";
 
@@ -19,13 +22,18 @@ const Dashboard = () => {
   };
 
   if (isFetchingOkr) {
-    return <div>Loading !!!</div>;
+    return (
+      <Container>
+        <Navbar title=" Ally - OKR's List " />
+        <div>Loading !!!</div>
+      </Container>
+    );
   }
 
   if (!isFetchingOkr) {
     return (
       <Container>
-        <h2> OKR's List </h2>
+        <Navbar title=" Ally - OKR's List " />
         <OKRSection>
           <Filter>
             <label>Category </label>
@@ -63,5 +71,4 @@ const OKRSection = styled.section`
   margin: auto;
 `;
 
-const Filter = styled.div`
-`;
+const Filter = styled.div``;

@@ -1,9 +1,12 @@
 export default {
     default: {
+      dimmer: {
+        main: 'rgba(0,0,0,0.5)',
+      },
       primary: {
-        light: 'rgba(255, 51, 102, 0.15)',
-        main: '#FF3366',
-        dark: '#FF1A53',
+        light: '#dbffee',
+        main: '#58BD8F',
+        dark: '#2fac71',
       },
       secondary: {
         light: '#FFFFFF',
