@@ -11,11 +11,11 @@ const Dashboard = () => {
     DashboardContext
   );
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(undefined);
 
-  const handleCategoryChange = (e) => {
+  const handleCategoryChange = e => {
     setSelectedCategory(e.target.value);
-  }
+  };
 
   if (isFetchingOkr) {
     return <div>Loading !!!</div>;
@@ -28,10 +28,19 @@ const Dashboard = () => {
         <select value={selectedCategory} onChange={handleCategoryChange}>
           <option>-- select category --</option>
           {category.map(item => (
-            <option value={item.category}>{item.category}</option>
+            <option key={item.category} value={item.category}>{item.category}</option>
           ))}
         </select>
-        <OKRList objectives={!selectedCategory ? objectives : objectives.filter(objective => objective.category === selectedCategory)} keyResults={keyResults} />
+        <OKRList
+          objectives={
+            !selectedCategory
+              ? objectives
+              : objectives.filter(
+                  objective => objective.category === selectedCategory
+                )
+          }
+          keyResults={keyResults}
+        />
       </>
     );
   }

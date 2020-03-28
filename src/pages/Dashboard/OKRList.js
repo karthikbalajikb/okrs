@@ -12,6 +12,7 @@ const OKRList = ({ objectives, keyResults }) => (
   <OKRContainer>
     {objectives.map(objective => (
       <ObjectiveCard
+        key={objective.id}
         title={objective.title}
         onExpand={objective.id}
         keyResults={getKeyResultsBasedOnObjective({

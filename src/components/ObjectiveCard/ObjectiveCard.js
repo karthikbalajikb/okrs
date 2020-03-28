@@ -19,7 +19,7 @@ const ObjectiveCard = ({ title, keyResults }) => {
       </Container>
       {isExpanded &&
         keyResults.map(keyResult => (
-          <KeyResultListItem title={keyResult.title} />
+          <KeyResultListItem key={keyResult.title} title={keyResult.title} />
         ))}
     </>
   );
