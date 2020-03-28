@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 
 // page components
 import OKRList from "./OKRList";
@@ -7,9 +7,15 @@ import OKRList from "./OKRList";
 import { DashboardContext } from "../../containers/Dashboard";
 
 const Dashboard = () => {
-  const { isFetchingOkr, objectives, keyResults } = useContext(
+  const { isFetchingOkr, category, objectives, keyResults } = useContext(
     DashboardContext
   );
+
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  }
 
   if (isFetchingOkr) {
     return <div>Loading !!!</div>;
@@ -19,7 +25,13 @@ const Dashboard = () => {
     return (
       <>
         <h2> OKR's List </h2>
-        <OKRList objectives={objectives} keyResults={keyResults} />
+        <select value={selectedCategory} onChange={handleCategoryChange}>
+          <option>-- select category --</option>
+          {category.map(item => (
+            <option value={item.category}>{item.category}</option>
+          ))}
+        </select>
+        <OKRList objectives={!selectedCategory ? objectives : objectives.filter(objective => objective.category === selectedCategory)} keyResults={keyResults} />
       </>
     );
   }
